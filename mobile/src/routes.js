@@ -15,12 +15,12 @@ export default function Routes(){
     return(
         <NavigationContainer> 
             <appStack.Navigator screenOptions={{headerShown : false}}>
-                <appStack.Screen component={Emergencia} />
-                <appStack.Screen component={Logon} />
-                <appStack.Screen component={Mais} />
-                <appStack.Screen component={Register} />
-                <appStack.Screen component={Dicionario} />
-                <appStack.Screen component={Drogas} />
+                <appStack.Screen component={Emergencia} name='Emergencia' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Logon} name='Login' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Mais} name='Mais' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Register} name='Register' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Dicionario} name='Dicionario' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Drogas} name='Drogas' options={{animationEnabled: false,}}/>
             </appStack.Navigator>
         </NavigationContainer>
     )
