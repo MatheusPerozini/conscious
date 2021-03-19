@@ -1,13 +1,36 @@
 import React from 'react';
-import { View , Image , TouchableOpacity ,Text , TextInput} from 'react-native';
+import { View , Image , TouchableOpacity ,Text , FlatList} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Menu from '../../menu'
+
+import { Ionicons } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons'; 
 
 import styles from './styles'
 
 export default function Substancia(){
+    const navigation = useNavigation();
+
     return(
         <View style={styles.container}>
-
+            <TouchableOpacity style={{left : 13 , top : 20 , backgroundColor : 'white' , width : '8%' , borderRadius : 70 ,zIndex : 1}} onPress={() => navigation.goBack()}><Ionicons name="arrow-back-outline" size={30} color="black" style={{left : 2}}/></TouchableOpacity>
+            <FlatList data={[1]} keyExtractor={e => String(e)} style={{height : '89%' , bottom : 30}} renderItem={() => (
+                <View>
+                    <Image style={{width : '100%' , height : 300,}}/>
+                    <Text style={styles.title}>COCAINAAA</Text>
+                    <Text style={styles.description}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;A cocaina faz mal vc n deveria usar isso noia lixo aaaaaaaaaaaa....Mas mó bom n vou mentirkkk
+                    </Text>
+                    <Text style={styles.title}>Composição :</Text>
+                    <Text style={styles.title2}>Tipo de droga : Psicoativa</Text>
+                    <Text style={styles.title}>Efeitos :</Text>
+                    <Text style={styles.description}><Feather name="circle" size={12} color="black" />  Deixa de pau duro</Text>
+                    <Text style={styles.title}>Consequências :</Text>
+                    <Text style={styles.title}>O que fazer caso :</Text>
+                    <Text style={styles.title}>Curiosidades :</Text>
+                    <Text></Text>
+                </View>
+            )}/>
             <Menu />
         </View>
     )

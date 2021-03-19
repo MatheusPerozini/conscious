@@ -7,7 +7,7 @@ export default StyleSheet.create({
         height : 80,
         justifyContent : 'center',
         alignItems : 'center',
-        marginVertical : 23,
+        marginVertical : 10,
         left : 35,
         borderRadius : 15,
         borderWidth : 1,
@@ -21,12 +21,14 @@ export default StyleSheet.create({
         fontSize : 15,
         width : '80%',
         borderRadius : 10,
-        paddingLeft : 10
+        backgroundColor : 'white',
+        paddingLeft : 10,
+        bottom : 8
     },
     primeiro : {
         backgroundColor : 'white',
         width : '80%',
-        height : 80,
+        height : 65,
         justifyContent : 'center',
         alignItems : 'center',
         marginBottom : 10,

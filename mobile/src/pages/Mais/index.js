@@ -14,7 +14,7 @@ export default function Mais(){
                 <View>
                     <Text style={styles.title}>Social</Text>
                     <TextInput placeholder=' Presencial , data ....' style={styles.pesquisar} />
-                    <FontAwesome name="search" size={24} color="black"  style={{left : 357 , bottom : 33}}/>
+                    <FontAwesome name="search" size={24} color="black"  style={{left : 357 , bottom : 33 , zIndex : 1}}/>
                 </View>
                 <View>
                     <Text style={styles.title}>Grafico de controle</Text>

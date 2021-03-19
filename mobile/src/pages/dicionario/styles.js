@@ -13,7 +13,8 @@ export default StyleSheet.create({
         fontSize : 15,
         width : '90%',
         borderRadius : 10,
-        paddingLeft : 10
+        paddingLeft : 10,
+        backgroundColor : 'white'
     },
     alfabeto : {
         left : 387,
@@ -39,7 +40,7 @@ export default StyleSheet.create({
     },
     itens : {
         marginVertical : 5,
-        fontSize : 20,
+        fontSize : 17,
         left : 10
     },
 })
