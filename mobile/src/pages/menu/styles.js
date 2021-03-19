@@ -3,9 +3,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container : {
         flexDirection:'row',
+        position : 'absolute',
         alignItems: 'flex-start',
         backgroundColor : 'white',
         height : 85,
+        top : 689
     },
     navegacao : {
         borderWidth : 0,

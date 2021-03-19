@@ -20,7 +20,8 @@ export default StyleSheet.create({
         height : 40,
         fontSize : 15,
         width : '80%',
-        borderRadius : 10
+        borderRadius : 10,
+        paddingLeft : 10
     },
     primeiro : {
         backgroundColor : 'white',
