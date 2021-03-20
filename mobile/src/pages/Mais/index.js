@@ -7,6 +7,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function Mais(){
+
     return(
         <View style={styles.container}>
             <FlatList data={[1]} keyExtractor={e => String(e)} style={{left : 7}} renderItem={() => (

@@ -28,7 +28,8 @@ export default function DrogaUnica(){
                     <Text style={styles.title}>Efeitos :</Text>
                     <Text style={styles.description}><Feather name="circle" size={12} color="black" />  Deixa de pau duro</Text>
                     <Text style={styles.title}>Consequências :</Text>
-                    <Text style={styles.title}>O que fazer caso :</Text>
+                    <Text style={styles.title}>Riscos e cuidados :</Text>
+                    <Text>Duração de </Text>
                     <Text style={styles.title}>Curiosidades :</Text>
                     <Text></Text>
                 </View>

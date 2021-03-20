@@ -1,17 +1,22 @@
 import React from 'react';
 import { View , Image , TouchableOpacity ,Text , TextInput} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles'
 
 export default function Register(){
+    const navigate = useNavigation();
     return(
         <View style={styles.container}>
-            <TextInput>Email</TextInput>
-            <TextInput>Celular</TextInput>
-            <TextInput>Senha</TextInput>
-            <TextInput>Confirmar Senha</TextInput>
-            <Text>Eu concordo com os termos de usúario e declaro que sou maior de idade</Text>
-            <TouchableOpacity>Criar conta</TouchableOpacity>
+            <TextInput placeholder='Email' style={styles.inputs}></TextInput>
+            <TextInput placeholder='Celular' style={styles.inputs}></TextInput>
+            <TextInput placeholder='Senha' style={styles.inputs}></TextInput>
+            <TextInput placeholder='Confirmar Senha' style={styles.inputs}></TextInput>
+            <TouchableOpacity style={styles.check}/>
+            <Text style={{left : 60 ,bottom : 38 , width : 325}}>Ao criar uma conta você concorda com os termos de usúario.</Text>
+            <TouchableOpacity onPress={() => navigate.navigate('Login')} style={styles.confirm}>
+                <Text >Criar conta</Text>
+            </TouchableOpacity>
         </View>
     )
 }

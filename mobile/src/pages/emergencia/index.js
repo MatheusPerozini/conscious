@@ -6,6 +6,7 @@ import Menu from '../menu'
 import styles from './styles'
 
 export default function Emergencia(){
+
     var [aumentar1, setAumentar1] = useState(true);
     var [aumentar2, setAumentar2] = useState(true);
     var [aumentar3, setAumentar3] = useState(true);
