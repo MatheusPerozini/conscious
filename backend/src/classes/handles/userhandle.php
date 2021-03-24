@@ -11,11 +11,14 @@ class userhandle {
 
     public function ALL(){
         $this->sql = new sql();
-        $test = $this->sql -> comand(
+        $test = $this->sql -> comandFetch(
         "SELECT * FROM substancias"
         );
-
-        return var_dump($test);
+        foreach($test as $row){
+            foreach($row as $key => $value){
+                echo '<p> '.$key. ' e '. $value.'</p>';
+            }
+        }
     } 
 }
 ?>
