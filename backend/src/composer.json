@@ -4,7 +4,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Example\\": "classes/"
+            "classes\\": "classes/",
+            "App\\": "src/",
+            "handles\\" : "classes/handles",
+            "connection\\" : "classes/connection"
         }
     }
 }
