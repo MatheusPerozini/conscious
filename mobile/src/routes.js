@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
 
 import Emergencia from '../src/pages/emergencia'
 import Logon from './pages/Login'
@@ -16,16 +16,12 @@ const appStack = createStackNavigator();
 
 export default function Routes(){
     return(
-        <NavigationContainer> 
+        <NavigationContainer theme={scheme == 'dark' ? DefaultTheme : DarkTheme}>  
             <appStack.Navigator screenOptions={{headerShown : false}}>
             <appStack.Screen component={Logon} name='Login' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Drogas} name='Drogas' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Register} name='Register' options={{animationEnabled: false,}}/>
-                
-                
-                
                 <appStack.Screen component={Mais} name='Mais' options={{animationEnabled: false,}}/>
-                
                 <appStack.Screen component={Dicionario} name='Dicionario' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Emergencia} name='Emergencia' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={DrogasPesquisa} name='DrogasPesquisa' options={{animationEnabled: false,}}/>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View , TouchableOpacity ,Text , TextInput , FlatList} from 'react-native';
+import { View , TouchableOpacity ,Text , TextInput , FlatList ,Switch} from 'react-native';
 import Menu from '../menu'
+import Switcher from '../switch'
 import { useNavigation } from '@react-navigation/native';
 
 import { FontAwesome } from '@expo/vector-icons'; 
@@ -19,6 +20,7 @@ export default function Drogas(){
             <TextInput placeholder=' Nome da droga , tipo ...' style={styles.pesquisar} onSubmitEditing={() => navigate.navigate('DrogasPesquisa')}></TextInput>
             <FlatList data={[1]} keyExtractor={e => String(e)} style={{height : '68%'}} renderItem={() => (
                 <View>
+                    <Switcher />
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>Ecstasys (Balas)</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 90}}>LSDs (Doces)</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 95}}>Cogumelos</Text></TouchableOpacity>

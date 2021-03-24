@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use handles\userhandle;
 
-//este erro pode ignorar
+//este erro pode ignorar , ué o erro sumiu kkkkkkkkkkk
 $app = new \Slim\app;
 //$app->setBasePath('/myapp');
 
@@ -22,7 +22,8 @@ $app->get('/', function (Request $request, Response $response) {
 
 $app->get('/test' , function(Request $request, Response $response){
     global $user;
-    $user->ALL($request, $response);
+    $stmt = $user->ALL();
+    $response->getBody()->write($stmt);
     return $response;
 });
 

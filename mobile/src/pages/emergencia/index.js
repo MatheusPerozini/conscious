@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import { AntDesign } from '@expo/vector-icons'; 
 import { View , TouchableOpacity ,Text , FlatList , Linking , StyleSheet} from 'react-native';
+import Switcher from '../switch'
 
 import Menu from '../menu'
 import styles from './styles'
@@ -34,6 +35,7 @@ export default function Emergencia(){
             <FlatList data={[1]} keyExtractor={incident => String(incident)} style={styles.list}
             renderItem={() => (
             <View>
+                <Switcher />
                 <TouchableOpacity onPress={() => {setAumentar1(!aumentar1)}} 
                 style={[ajustavel.instructions1 , styles.instructions]}>
                 <View>
