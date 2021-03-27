@@ -2,6 +2,7 @@ import React from 'react';
 import { View , Image , TouchableOpacity ,Text , FlatList} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Menu from '../../menu'
+import api from '../../services/api';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
@@ -11,6 +12,7 @@ import styles from './styles'
 
 export default function DrogaUnica(){
     const navigation = useNavigation();
+    
 
     //sempre manter o ultime Text vazio , pois server como um espaçamento
     return(

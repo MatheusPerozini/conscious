@@ -9,10 +9,12 @@ use handles\substanceshandle;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use handles\userhandle;
+use handles\eventHandle;
 
 $app = new \Slim\app;
 //$app->setBasePath('/myapp');
 
+$event = new eventHandle();
 $user = new userhandle();
 $substancias = new substanceshandle();
 $drogas = new drugshandle();
@@ -78,12 +80,30 @@ $app->get('/drogas', function (Request $request, Response $response) {
     $response->getBody()->write($stmt);
     return $response;
 });
+$app->post('/drogaspesquisa',function(Request $request, Response $response){
+    global $drogas;
+    $body = $request->getBody();
+    $stmt = $drogas->pesquisar($body);
+    return $response->getBody()->write($stmt);
+});
 
 $app->get('/substancias' , function(Request $request, Response $response){
     global $substancias;
     $stmt = $substancias->substancias();
     $response->getBody()->write($stmt);
     return $response;
+});
+$app->post('/substanciaspesquisa' , function(Request $request, Response $response){
+    global $substancias;
+    $body = $request->getBody();
+    $stmt = $substancias->pesquisar($body);
+    return $response->getBody()->write($stmt);
+});
+
+$app->get('/eventos' , function(Request $request, Response $response){
+    global $event;
+    $stmt = $event->events();
+    return $response->getBody()->write($stmt);
 });
 
 $app->run();

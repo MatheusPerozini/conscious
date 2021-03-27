@@ -2,10 +2,11 @@ import React from 'react';
 import { View , TouchableOpacity ,Text , TextInput , FlatList ,Switch} from 'react-native';
 import Menu from '../menu'
 import Switcher from '../switch'
+import api from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
 
 import { FontAwesome } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
 
 import styles from './styles'
 

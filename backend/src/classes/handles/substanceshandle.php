@@ -16,5 +16,13 @@ class substanceshandle {
         );
         return json_encode($data);
     }
+    public function pesquisar($req){
+        $this->sql = new Sql();
+        $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "SELECT * FROM substancias WHERE nome LIKE '%$body->pesquisar%' OR composicao LIKE '%$body->pesquisar%' OR usadas LIKE '%$body->pesquisar%' OR primeira_letra LIKE '%$body->pesquisar%'"
+        );
+        return json_encode($data);
+    }
 }
 ?>

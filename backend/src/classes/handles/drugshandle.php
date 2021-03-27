@@ -33,5 +33,13 @@ class drugshandle {
         );
         return json_encode($data);
     }
+    public function pesquisar($req){
+        $this->sql = new Sql();
+        $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "SELECT * FROM drogas WHERE nome LIKE '%$body->pesquisar%' OR substancias_presentes LIKE '%$body->pesquisar%' OR tipo LIKE '%$body->pesquisar%'"
+        );
+        return json_encode($data);
+    }
 }
 ?>
