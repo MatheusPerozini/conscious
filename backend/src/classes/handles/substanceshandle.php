@@ -11,10 +11,10 @@ class substanceshandle {
 
     public function substancias(){
         $this->sql = new sql();
-        $test = $this->sql -> comandFetch(
+        $data = $this->sql -> comandFetch(
         "SELECT * FROM substancias"
         );
-        return json_encode($test);
+        return json_encode($data);
     }
 }
 ?>

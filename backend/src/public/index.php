@@ -39,10 +39,17 @@ $app->post('/logon' , function(Request $request , Response $response){
     }
     return $response;
 });
+$app->post('/user' , function(Request $request, Response $response){
+    global $user;
+    $body = $request->getBody();
+    $stmt = $user->usuario($body);
+    return $response->getBody()->write($stmt);    
+});
 $app->post('/salvar/:id',function(Request $request ,Response $response , $id){
     global $user;
     $body = $request->getBody();
     $stmt = $user->salvar($body , $id);
+    return $response->getBody()->write($stmt);
 });
 $app->post('/desalvar/:id',function(Request $request , Response $response , $id){
     global $user;

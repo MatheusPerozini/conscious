@@ -38,9 +38,13 @@ class userhandle {
         return $result;
     }
     public function salvar($req , $params){
-        //vai pegar o array para poder salvar a droga , talvez criar pivate funciton
+        //n pode array ,ent vai ter q criar uma nova tabela de salvos e salvar com INSERT
         $this->sql = new Sql();
         $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "SELECT salvos FROM users WHERE id='$body->id'"
+        );
+        return json_encode($data);
 
     }
     public function desalvar($req , $params){
@@ -49,13 +53,21 @@ class userhandle {
         $body = json_decode($req);
     }
     public function verGrafico($req){
-        //vai ter q criar uma nova tabela ,  que vai buscar os dados e alterar
+        //vai ter q criar uma nova tabela , pois vai buscar os dados e alterar
         $this->sql = new Sql();
         $body = json_decode($req);
     }
     public function alterarGrafico($req){
         $this->sql = new Sql();
         $body = json_decode($req);
+    }
+    public function usuario($req){
+        $this->sql = new Sql();
+        $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "SELECT * FROM users WHERE id='$body->id'"
+        );
+        return json_encode($data);
     }
 }
 ?>
