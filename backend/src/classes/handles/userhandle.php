@@ -37,29 +37,21 @@ class userhandle {
         }
         return $result;
     }
-    public function salvar($req , $params){
-        //n pode array ,ent vai ter q criar uma nova tabela de salvos e salvar com INSERT
+    public function verGrafico($req){
         $this->sql = new Sql();
         $body = json_decode($req);
         $data = $this->sql->comandFetch(
-            "SELECT salvos FROM users WHERE id='$body->id'"
+            "SELECT * FROM grafico WHERE id_user='$body->id'"
         );
         return json_encode($data);
-
-    }
-    public function desalvar($req , $params){
-        //vai tirar do array para poder salvar a droga , talvez criar pivate function
-        $this->sql = new Sql();
-        $body = json_decode($req);
-    }
-    public function verGrafico($req){
-        //vai ter q criar uma nova tabela , pois vai buscar os dados e alterar
-        $this->sql = new Sql();
-        $body = json_decode($req);
     }
     public function alterarGrafico($req){
         $this->sql = new Sql();
         $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "INSERT INTO grafico (id_user , repostas) VALUES ('$body->id','$body->resposta')"
+        );
+        return json_encode($data);
     }
     public function usuario($req){
         $this->sql = new Sql();

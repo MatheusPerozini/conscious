@@ -45,26 +45,31 @@ $app->post('/user' , function(Request $request, Response $response){
     $stmt = $user->usuario($body);
     return $response->getBody()->write($stmt);    
 });
+
 $app->post('/salvar/:id',function(Request $request ,Response $response , $id){
-    global $user;
+    global $drogas;
     $body = $request->getBody();
-    $stmt = $user->salvar($body , $id);
+    $stmt = $drogas->salvar($body , $id);
     return $response->getBody()->write($stmt);
 });
 $app->post('/desalvar/:id',function(Request $request , Response $response , $id){
-    global $user;
+    global $drogas;
     $body = $request->getBody();
-    $stmt = $user->desalvar($body , $id);
+    $stmt = $drogas->desalvar($body , $id);
+    return $response->getBody()->write($stmt);
 });
-$app->get('/grafico',function(Request $request , Response $response){
+
+$app->post('/grafico',function(Request $request , Response $response){
     global $user;
     $body = $request->getBody();
     $stmt = $user->verGrafico($body);
+    return $response->getBody()->write($stmt);
 });
 $app->post('/editGrafico',function(Request $request , Response $response){
     global $user;
     $body = $request->getBody();
     $stmt = $user->alterarGrafico($body);
+    return $response->getBody()->write($stmt);
 });
 
 $app->get('/drogas', function (Request $request, Response $response) {

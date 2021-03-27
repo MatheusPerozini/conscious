@@ -16,5 +16,22 @@ class drugshandle {
         );
         return json_encode($data);
     }
+    public function salvar($req , $params){
+        $this->sql = new Sql();
+        $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "INSERT INTO salvos (id_user , id_droga) VALUES ('$body->id','$params')"
+        );
+        return json_encode($data);
+
+    }
+    public function desalvar($req , $params){
+        $this->sql = new Sql();
+        $body = json_decode($req);
+        $data = $this->sql->comandFetch(
+            "DELETE FROM salvos WHERE '$body->id' AND '$params'"
+        );
+        return json_encode($data);
+    }
 }
 ?>
