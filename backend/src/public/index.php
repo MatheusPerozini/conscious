@@ -48,16 +48,16 @@ $app->post('/user' , function(Request $request, Response $response){
     return $response->getBody()->write($stmt);    
 });
 
-$app->post('/salvar/:id',function(Request $request ,Response $response , $id){
+$app->post('/salvar/{id}',function(Request $request ,Response $response , $args){
     global $drogas;
     $body = $request->getBody();
-    $stmt = $drogas->salvar($body , $id);
+    $stmt = $drogas->salvar($body , $args['id']);
     return $response->getBody()->write($stmt);
 });
-$app->post('/desalvar/:id',function(Request $request , Response $response , $id){
+$app->post('/desalvar/{id}',function(Request $request , Response $response , $args){
     global $drogas;
     $body = $request->getBody();
-    $stmt = $drogas->desalvar($body , $id);
+    $stmt = $drogas->desalvar($body , $args['id']);
     return $response->getBody()->write($stmt);
 });
 
@@ -97,6 +97,11 @@ $app->post('/substanciaspesquisa' , function(Request $request, Response $respons
     global $substancias;
     $body = $request->getBody();
     $stmt = $substancias->pesquisar($body);
+    return $response->getBody()->write($stmt);
+});
+$app->post('/substancias/{letra}' , function(Request $request, Response $response , $args){
+    global $substancias;
+    $stmt = $substancias->alfabeto($args['letra']);
     return $response->getBody()->write($stmt);
 });
 

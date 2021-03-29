@@ -24,5 +24,12 @@ class substanceshandle {
         );
         return json_encode($data);
     }
+    public function alfabeto($letra){
+        $this->sql = new Sql();
+        $data = $this->sql->comandFetch(
+            "SELECT * FROM substancias WHERE nome LIKE '$letra%'"
+        );
+        return json_encode($data);
+    }
 }
 ?>
