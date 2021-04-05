@@ -2,7 +2,7 @@ import React from 'react';
 import { View , Image , TouchableOpacity ,Text , TextInput , FlatList} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Menu from '../../menu'
-import api from '../../services/api';
+//import api from '../../services/api';
 
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 

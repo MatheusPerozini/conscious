@@ -2,6 +2,7 @@
 namespace src;
 
 header("Access-Control-Allow-Headers: *");
+header('Content-Type: application/json');
 require __DIR__ . '/../vendor/autoload.php';
 
 use handles\drugshandle;

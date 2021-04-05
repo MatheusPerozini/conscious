@@ -23,7 +23,7 @@ export default function Register(){
 
     return(
         <View style={styles.container}>
-            <TextInput placeholder='Email' style={styles.inputs} onChange={}></TextInput>
+            <TextInput placeholder='Email' style={styles.inputs}></TextInput>
             <TextInput placeholder='Senha' style={styles.inputs}></TextInput>
             <TextInput placeholder='Confirmar Senha' style={styles.inputs}></TextInput>
             <TouchableOpacity style={styles.check}/>

@@ -2,6 +2,7 @@ import React from 'react';
 import { View , FlatList , TouchableOpacity ,Text , TextInput} from 'react-native';
 import Menu from '../menu'
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
 
 import { FontAwesome } from '@expo/vector-icons'; 
 
@@ -11,6 +12,18 @@ export default function Dicionario(){
     const navigation = useNavigation();
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
+    async function substanciaEspecifica(e){
+       const resp = await api.post(`/substancias/${e}`)
+
+        localStorage.setItem('idSubstancia', resp.data[0].nome);
+        navigation.navigate('Substancia');
+    }
+
+    async function test(){
+        const resp = await api.post(`/substancias/d`);
+        alert(resp);
+    }
+//{api.post(`/substancias/${e}`).then(resp => resp.data[0].nome)}
     return(
         <View style={styles.container}>
             <TextInput placeholder=' Nome da substância , composição ...' style={styles.pesquisar}></TextInput>
@@ -27,8 +40,8 @@ export default function Dicionario(){
                     {alphabet.map(e => (
                         <View>
                         <Text style={styles.title}>{e}</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Substancia')}>
-                            <Text style={styles.itens}>Canabidiol (C21H30O2)</Text>
+                        <TouchableOpacity onPress={() => test()}>
+                            <Text style={styles.itens}>aaaaaa</Text>
                         </TouchableOpacity>
                     </View>
                     ))}

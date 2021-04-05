@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-
+//top : 689
 export default StyleSheet.create({
     container : {
         flexDirection:'row',
@@ -7,7 +7,7 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         backgroundColor : 'white',
         height : 85,
-        top : 689
+        top : 600
     },
     navegacao : {
         borderWidth : 0,
