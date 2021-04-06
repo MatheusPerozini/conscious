@@ -7,7 +7,7 @@ export default StyleSheet.create({
         alignItems: 'flex-start',
         backgroundColor : 'white',
         height : 85,
-        top : 600
+        top : 687
     },
     navegacao : {
         borderWidth : 0,

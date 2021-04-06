@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState , useEffect} from 'react';
 import { View , FlatList , TouchableOpacity ,Text , TextInput} from 'react-native';
 import Menu from '../menu'
 import { useNavigation } from '@react-navigation/native';
@@ -9,21 +9,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function Dicionario(){
+    const [substancias , setSubstancias] = useState([]);
+
     const navigation = useNavigation();
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-    async function substanciaEspecifica(e){
-       const resp = await api.post(`/substancias/${e}`)
+    useEffect(() => {
+        api.get('/substancias').then(resp => {setSubstancias(resp.data)});
+    });
 
-        localStorage.setItem('idSubstancia', resp.data[0].nome);
-        navigation.navigate('Substancia');
-    }
-
-    async function test(){
-        const resp = await api.post(`/substancias/d`);
-        alert(resp);
-    }
-//{api.post(`/substancias/${e}`).then(resp => resp.data[0].nome)}
     return(
         <View style={styles.container}>
             <TextInput placeholder=' Nome da substância , composição ...' style={styles.pesquisar}></TextInput>
@@ -40,9 +34,15 @@ export default function Dicionario(){
                     {alphabet.map(e => (
                         <View>
                         <Text style={styles.title}>{e}</Text>
-                        <TouchableOpacity onPress={() => test()}>
-                            <Text style={styles.itens}>aaaaaa</Text>
-                        </TouchableOpacity>
+                        {substancias.map(i => {
+                            let element = JSON.stringify(i.nome);
+                            if(element.charAt(1).toLocaleUpperCase() == e){
+                                return(
+                                    <TouchableOpacity onPress={() => navigation.navigate('DrogaUnica' , {id : i.id})}>
+                                    <Text style={styles.itens}>{element.slice(1,-1)}</Text>
+                                    </TouchableOpacity>
+                                );}
+                        })}
                     </View>
                     ))}
                 </View>
