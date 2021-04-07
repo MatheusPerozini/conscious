@@ -22,12 +22,18 @@ export default function Drogas(){
             <FlatList data={[1]} keyExtractor={incident => String(incident)} style={{height : '68%'}} renderItem={() => (
                 <View>
                     <Switcher />
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>Ecstasys (Balas)</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 90}}>LSDs (Doces)</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 95}}>Cogumelos</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 110}}>Todas</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 110}}>sex</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 110}}>lol</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.itens}><Text style={{right : 110}}>test</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>aaaa</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>aaaa</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>aaaa</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>aaaa</Text></TouchableOpacity>
                     <TouchableOpacity style={styles.itens}><Text style={{right : 80}}>aaaa</Text></TouchableOpacity>
-                    
                 </View>
             )}/>
             <Menu />

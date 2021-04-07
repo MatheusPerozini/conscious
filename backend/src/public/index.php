@@ -87,6 +87,11 @@ $app->post('/drogaspesquisa',function(Request $request, Response $response){
     $stmt = $drogas->pesquisar($body);
     return $response->getBody()->write($stmt);
 });
+$app->post('/drogas/{id}' , function(Request $request, Response $response , $args){
+    global $drogas;
+    $stmt = $drogas->informacoes($args['id']);
+    return $response->getBody()->write($stmt);
+});
 
 $app->get('/substancias' , function(Request $request, Response $response){
     global $substancias;
@@ -103,6 +108,11 @@ $app->post('/substanciaspesquisa' , function(Request $request, Response $respons
 $app->post('/substancias/{letra}' , function(Request $request, Response $response , $args){
     global $substancias;
     $stmt = $substancias->alfabeto($args['letra']);
+    return $response->getBody()->write($stmt);
+});
+$app->post('/substanciasinfo/{id}' , function(Request $request, Response $response , $args){
+    global $substancias;
+    $stmt = $substancias->informacao($args['id']);
     return $response->getBody()->write($stmt);
 });
 

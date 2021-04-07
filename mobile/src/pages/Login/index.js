@@ -14,11 +14,16 @@ export default function Logon(){
     async function LoginHandle(e){
         e.preventDefault();
 
+        const data = {
+            email,
+            senha
+        };
+
         try {
-            await api.post();
+            await api.post('/logon' , data);
             navigation.navigate('Drogas');
         } catch (error) {
-        alert('Tente novamente')        
+            navigation.navigate('Register');      
         }
     }
 
@@ -26,9 +31,11 @@ export default function Logon(){
         <View style={styles.container}>
             <Image/>
             <Text style={{top : 320 , left : 25}}>O jeito conciente de utilizar drogas recreativas</Text>
-            <TextInput placeholder='Email' style={styles.inputs}></TextInput>
-            <TextInput placeholder='Senha' style={styles.inputs}></TextInput>
-            <TouchableOpacity style={styles.login} onPress={() =>navigation.navigate('Drogas')}><Text>Entrar</Text></TouchableOpacity>
+            <TextInput placeholder='Email' style={styles.inputs} 
+            onChange={e => setEmail(e.target.value)} value={email}></TextInput>
+            <TextInput placeholder='Senha' style={styles.inputs} 
+            onChange={e => setSenha(e.target.value)} value={senha}></TextInput>
+            <TouchableOpacity style={styles.login} onPress={() => LoginHandle()}><Text>Entrar</Text></TouchableOpacity>
             <Text style={{top : 440 , left : 150}}>ou entrar com</Text>
             <View style={{alignItems: 'flex-start',flexDirection:'row',}}>
                 <TouchableOpacity style={styles.methods}><Text>Google</Text></TouchableOpacity>

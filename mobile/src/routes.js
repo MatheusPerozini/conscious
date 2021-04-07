@@ -11,7 +11,6 @@ import Drogas from './pages/Drogas'
 import DrogasPesquisa from './pages/Drogas/DrogasPesquisa'
 import DrogaUnica from './pages/Drogas/DrogaUnica'
 import Substancia from './pages/dicionario/substancia'
-import Teste from './pages/test';
 
 const appStack = createStackNavigator();
 
@@ -19,17 +18,18 @@ export default function Routes(){
     return(
         <NavigationContainer>  
             <appStack.Navigator screenOptions={{headerShown : false}}>
+                <appStack.Screen component={Substancia} name='Substancia' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={DrogaUnica} name='DrogaUnica' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Dicionario} name='Dicionario' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Logon} name='Login' options={{animationEnabled: false,}}/>
-                <appStack.Screen component={Teste} name='Test'/>
                 <appStack.Screen component={Drogas} name='Drogas' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Register} name='Register' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Mais} name='Mais' options={{animationEnabled: false,}}/>
                 
                 <appStack.Screen component={Emergencia} name='Emergencia' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={DrogasPesquisa} name='DrogasPesquisa' options={{animationEnabled: false,}}/>
-                <appStack.Screen component={DrogaUnica} name='DrogaUnica' options={{animationEnabled: false,}}/>
-                <appStack.Screen component={Substancia} name='Substancia' options={{animationEnabled: false,}}/>
+                
+               
             </appStack.Navigator>
         </NavigationContainer>
     )

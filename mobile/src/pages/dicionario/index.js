@@ -38,7 +38,7 @@ export default function Dicionario(){
                             let element = JSON.stringify(i.nome);
                             if(element.charAt(1).toLocaleUpperCase() == e){
                                 return(
-                                    <TouchableOpacity onPress={() => navigation.navigate('DrogaUnica' , {id : i.id})}>
+                                    <TouchableOpacity onPress={() => navigation.navigate('Substancia' , {id : i.id})}>
                                     <Text style={styles.itens}>{element.slice(1,-1)}</Text>
                                     </TouchableOpacity>
                                 );}

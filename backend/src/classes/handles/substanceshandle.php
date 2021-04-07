@@ -31,5 +31,12 @@ class substanceshandle {
         );
         return json_encode($data);
     }
+    public function informacao($params){
+        $this->sql = new Sql();
+        $data = $this->sql->comandFetch(
+            "SELECT * FROM substancias WHERE id='$params'"
+        );
+        return json_encode($data);
+    }
 }
 ?>

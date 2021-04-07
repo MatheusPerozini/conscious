@@ -1,6 +1,6 @@
 import React from 'react';
 import { View , Image , TouchableOpacity ,Text , FlatList} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation , useRoute } from '@react-navigation/native';
 import Menu from '../../menu'
 //import api from '../../services/api';
 
@@ -12,7 +12,9 @@ import styles from './styles'
 
 export default function DrogaUnica(){
     const navigation = useNavigation();
-    
+    //const id = useRoute.params
+
+    //const resp = api.post(``);
 
     //sempre manter o ultime Text vazio , pois server como um espaçamento
     return(
@@ -21,7 +23,7 @@ export default function DrogaUnica(){
             <FlatList data={[1]} keyExtractor={e => String(e)} style={{height : '89%' , bottom : 30}} renderItem={() => (
                 <View>
                     <Image source={test} style={{width : '100%' , height : 300,}}/>
-                    <Text style={styles.title}>COCAINAAA</Text>
+                    <Text style={styles.title}>cocaina</Text>
                     <Text style={styles.description}>
                     &nbsp;&nbsp;&nbsp;&nbsp;A cocaina faz mal vc n deveria usar isso noia lixo aaaaaaaaaaaa....Mas mó bom n vou mentirkkk
                     </Text>
