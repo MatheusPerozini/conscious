@@ -14,12 +14,12 @@ class userhandle {
         $this->sql = new Sql();
         $body = json_decode($req);
         if($this->sql->comandFetch(
-         "SELECT * FROM users WHERE '$body->email' OR '$body->senha'"   
+         "SELECT * FROM users WHERE '$body->Email' OR '$body->Senha'"   
         )){
             return false;
         }else{
             $this->sql -> comand(
-            "INSERT INTO users (senha , email) VALUES ('$body->senha' , '$body->email')"
+            "INSERT INTO users (senha , email) VALUES ('$body->Senha' , '$body->Email')"
             );
             return $req;
         }

@@ -1,6 +1,6 @@
 import React , {useState , useEffect} from 'react';
 import { View , Image , TouchableOpacity ,Text , TextInput , FlatList} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation  ,useRoute} from '@react-navigation/native';
 import Menu from '../../menu'
 import api from '../../../services/api';
 
@@ -10,8 +10,12 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function DrogasPesquisa(){
+    const route = useRoute();
+
+    const pesquisa_anterior = route.params.pesquisa;
+    
     const [drogas , setDrogas] = useState([]);
-    const [pesquisa , setPesquisa] = useState('');
+    const [pesquisa , setPesquisa] = useState(pesquisa_anterior);
 
     const navigation = useNavigation();
 

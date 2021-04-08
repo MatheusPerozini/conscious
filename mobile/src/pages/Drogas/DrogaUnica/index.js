@@ -15,13 +15,13 @@ export default function DrogaUnica(){
     const [resp , setResp] = useState([]);
 
     const navigation = useNavigation();
-
-    //const id = useRoute.params.id
-    const id = 1;
+    const userID = localStorage.getItem('id');
+    
+    const id = useRoute.params.id
     useEffect(() => {
         api.post(`/drogas/${id}`).then(resp => setResp(resp.data[0]));
     });
-    
+    //criar o botão salvar née
     //sempre manter o ultime Text vazio , pois server como um espaçamento
     //bota o slice que as vezes vai e as vezes não
     return(

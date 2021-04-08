@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import { View , Image , TouchableOpacity ,Text , TextInput} from 'react-native';
+import { View , Image , TouchableOpacity ,Text , TextInput , Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api'
 
@@ -10,18 +10,25 @@ export default function Register(){
 
     const [Email , setEmail] = useState('');
     const [Senha , setSenha] = useState('');
-
+//            navigate.navigate('Login')
     async function RegisterHandle(e){
-        const data = {
+        var data = {
             Email,
             Senha
         }
         
         try {
-            await api.post('/register' ,data);
-            navigate.navigate('Login')
+            await api.post('/register' , data);
+            Alert.alert(
+                "Parabéns",
+                "conta criada com sucesso"
+            )
+            navigate.navigate('Login');
         } catch (error) {
-            alert('Tente novamente');
+            Alert.alert(
+                "OPS , ocorreu algum problema",
+                "Tente novamente"
+            );
         }
     }
 

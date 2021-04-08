@@ -14,8 +14,7 @@ export default function Substancia(){
 
     const navigation = useNavigation();
     const route = useRoute();
-    //const id = route.params.id;
-    const id = 5;
+    const id = route.params.id;
 
     useEffect(() => {
         api.post(`/substanciasinfo/${id}`).then(resp => setResp(resp.data[0]));

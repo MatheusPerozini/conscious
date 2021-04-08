@@ -1,12 +1,15 @@
 import React from 'react';
 import { View , FlatList , TouchableOpacity ,Text , Image , TextInput} from 'react-native';
 import Menu from '../menu'
+import Switcher from '../switch';
+//import api from '../../services/api';
 
 import { Feather } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
 import styles from './styles'
 
 export default function Mais(){
+    //const userID = localStorage.getItem('id');
 
     return(
         <View style={styles.container}>
@@ -23,6 +26,7 @@ export default function Mais(){
                 <View>
                     <Text style={styles.title}>Configurações</Text>
                 </View>
+                <Switcher />
                 <TouchableOpacity>
                     <Feather name="log-out" size={24} color="black" />
                     <Text style={{left : 30 , bottom : 25}}>Deslogar</Text>

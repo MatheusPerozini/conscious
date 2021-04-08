@@ -1,5 +1,5 @@
 import React , {useState} from 'react';
-import { View , Image , TouchableOpacity ,Text , TextInput} from 'react-native';
+import { View , Image , TouchableOpacity ,Text , TextInput ,Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api'
 
@@ -12,18 +12,22 @@ export default function Logon(){
     const [senha , setSenha] = useState('');
 
     async function LoginHandle(e){
-        e.preventDefault();
-
+        
         const data = {
             email,
             senha
         };
 
         try {
-            await api.post('/logon' , data);
+            const resp = await api.post('/logon' , data);
+
+            localStorage.setItem('id',JSON.stringify(resp.data[0].id).slice(1,-1));
             navigation.navigate('Drogas');
         } catch (error) {
-            navigation.navigate('Register');      
+            Alert.alert(
+                "OPS , ocorreu algum problema",
+                "Tente novamente"
+            );      
         }
     }
 
