@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react';
 import { View , Image , TouchableOpacity ,Text , TextInput , FlatList} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Menu from '../../menu'
-import api from '../../services/api';
+import api from '../../../services/api';
 
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 
@@ -17,7 +17,7 @@ export default function DrogasPesquisa(){
 
     async function searchhandle(text){
         useEffect(() => {
-            const resp = await api.post('/drogaspesquisa' , {pesquisar : text});
+            const resp = api.post('/drogaspesquisa' , {pesquisar : text});
             setDrogas(resp.data);
         });
     }
@@ -33,7 +33,7 @@ export default function DrogasPesquisa(){
         <View style={styles.container}>
             <TouchableOpacity style={{left : 8 , top : 37}} onPress={() => navigation.goBack()}><Ionicons name="arrow-back-outline" size={30} color="black" /></TouchableOpacity>
             <TextInput placeholder=' Nome da droga , tipo ...' style={styles.pesquisar}
-            value={pesquisa} onChange={e => setPesquisa(e.target.value)}
+            value={pesquisa} onChange={e => setPesquisa(e)}
             onSubmitEditing={() => {searchhandle(pesquisa)}}></TextInput>
             <FontAwesome name="search" size={24} color="black" style={{left : 360 , bottom : 32 , zIndex : 1}} />
             <FlatList data={drogas} 

@@ -8,19 +8,17 @@ import styles from './styles'
 export default function Register(){
     const navigate = useNavigation();
 
-    var [Email , setEmail] = useState('');
-    var [Senha , setSenha] = useState('');
+    const [Email , setEmail] = useState('');
+    const [Senha , setSenha] = useState('');
 
     async function RegisterHandle(e){
-        e.preventDefault();
-
         const data = {
             Email,
             Senha
         }
         
         try {
-            await api.post('/register' , data);
+            await api.post('/register' ,data);
             navigate.navigate('Login')
         } catch (error) {
             alert('Tente novamente');
@@ -30,10 +28,12 @@ export default function Register(){
     return(
         <View style={styles.container}>
             <TextInput placeholder='Email' style={styles.inputs}
-            onChange={e => setEmail(e.target.value)} value={Email}></TextInput>
+            onChangeText={e => setEmail(e)} value={Email}></TextInput>
             <TextInput placeholder='Senha' style={styles.inputs}
-            onChange={e => setSenha(e.target.value)} value={Senha}></TextInput>
+            onChangeText={e => setSenha(e)} value={Senha}></TextInput>
             <TextInput placeholder='Confirmar Senha' style={styles.inputs}></TextInput>
+            <Text>{Email}</Text>
+            <Text>{Senha}</Text>
             <TouchableOpacity style={styles.check}/>
             <Text style={{left : 60 ,bottom : 38 , width : 325}}>Ao criar uma conta você concorda com os termos de usúario.</Text>
             <TouchableOpacity onPress={() => RegisterHandle()} style={styles.confirm}>

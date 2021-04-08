@@ -32,9 +32,9 @@ export default function Logon(){
             <Image/>
             <Text style={{top : 320 , left : 25}}>O jeito conciente de utilizar drogas recreativas</Text>
             <TextInput placeholder='Email' style={styles.inputs} 
-            onChange={e => setEmail(e.target.value)} value={email}></TextInput>
+            onChangeText={e => setEmail(e)} value={email}></TextInput>
             <TextInput placeholder='Senha' style={styles.inputs} 
-            onChange={e => setSenha(e.target.value)} value={senha}></TextInput>
+            onChangeText={e => setSenha(e)} value={senha}></TextInput>
             <TouchableOpacity style={styles.login} onPress={() => LoginHandle()}><Text>Entrar</Text></TouchableOpacity>
             <Text style={{top : 440 , left : 150}}>ou entrar com</Text>
             <View style={{alignItems: 'flex-start',flexDirection:'row',}}>
