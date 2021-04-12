@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "git": "^0.1.5",
+    "lodash": "^4.17.21",
+    "paths-js": "^0.4.11",
+    "point-in-polygon": "^1.1.0",
     "reactn": "^2.2.7"
   }
 }
