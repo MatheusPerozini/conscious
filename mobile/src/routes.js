@@ -11,6 +11,7 @@ import Drogas from './pages/Drogas'
 import DrogasPesquisa from './pages/Drogas/DrogasPesquisa'
 import DrogaUnica from './pages/Drogas/DrogaUnica'
 import Substancia from './pages/dicionario/substancia'
+import Social from './pages/Mais/social'
 
 const appStack = createStackNavigator();
 
@@ -27,6 +28,7 @@ export default function Routes(){
                 <appStack.Screen component={Dicionario} name='Dicionario' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Emergencia} name='Emergencia' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={DrogasPesquisa} name='DrogasPesquisa' options={{animationEnabled: false,}}/>
+                <appStack.Screen component={Social} name='Social' options={{animationEnabled: false,}}/>
             </appStack.Navigator>
         </NavigationContainer>
     )

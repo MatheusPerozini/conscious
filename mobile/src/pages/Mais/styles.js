@@ -52,7 +52,7 @@ export default StyleSheet.create({
         top : 10,
         left : 17,
         height : 90,
-        marginBottom:12,
+        marginBottom:15,
         marginTop : 7,
         borderRadius : 5
     },
@@ -62,6 +62,24 @@ export default StyleSheet.create({
         marginRight : 10,
         width : 125,
         borderRadius : 10,
-        height : 150
+        height : 170
+    },
+    socialTitle : {
+        fontWeight : 'bold',
+        marginLeft : 5,
+        top : 37
+    },
+    socialDescription : {
+        fontSize : 12,
+        marginLeft : 5,
+        width : 110,
+        height : 60,
+        top : 35
+    },
+    socialLink : {
+        fontSize : 10,
+        alignSelf : 'flex-end',
+        marginRight : 5,
+        top : 38
     }
 })

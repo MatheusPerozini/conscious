@@ -1,6 +1,7 @@
 import React ,{useEffect , useState} from 'react';
 import { View , FlatList , TouchableOpacity ,Text , Image , TextInput , StyleSheet} from 'react-native';
 import Menu from '../menu'
+import { useNavigation } from '@react-navigation/native';
 //import api from '../../services/api';
 
 import { Feather } from '@expo/vector-icons'; 
@@ -11,6 +12,7 @@ export default function Mais(){
     const [resposta , setResposta] = useState(true);
     //const userID = localStorage.getItem('id');
     const semanaGrafico = Array.from(Array(7).keys());
+    const navigate = useNavigation();
 
 //se selecionar semana , faz um map loop em que ele ira gerar 14 graficos , um de cada lado , e ira
 //dar display dependendo das repostas
@@ -23,26 +25,32 @@ export default function Mais(){
                     <Text style={styles.title}>Social</Text>
                     {//aki ficava o código de busca
                     }
-                    <View style={{flexWrap: 'wrap', alignItems: 'flex-start',flexDirection:'row'}}>
+                    <View style={{flexWrap: 'wrap', alignItems: 'flex-start',flexDirection:'row' , marginTop : 10}}>
                         <View style={styles.SocialItens}>
                             <Text>IMAGEM</Text>
-                            <Text>Biolocast</Text>
-                            <Text>Clique para o ouvir</Text>
+                            <Text style={styles.socialTitle}>Biolocast</Text>
+                            <Text style={styles.socialDescription}>descricao</Text>
+                            <Text style={styles.socialLink}>Clique para o ouvir</Text>
                         </View>
                         <View style={styles.SocialItens}>
                             <Text>IMAGEM</Text>
-                            <Text>AN</Text>
-                            <Text>Ir para o site</Text>
+                            <Text style={styles.socialTitle}>AN</Text>
+                            <Text style={styles.socialDescription}>descricao</Text>
+                            <Text style={styles.socialLink}>Ir para o site</Text>
                         </View>
                         <View style={styles.SocialItens}>
                             <Text>IMAGEM</Text>
-                            <Text>Test</Text>
-                            <Text>Ir para o site</Text>
+                            <Text style={styles.socialTitle}>Test</Text>
+                            <Text style={styles.socialDescription}>descricao</Text>
+                            <Text style={styles.socialLink}>Ir para o site</Text>
                         </View>
                     </View>
                     <TouchableOpacity
-                    style={{borderColor : 'black' , borderWidth : 2 , width : '90%' , marginTop : 10 , borderRadius : 5 , left : 12 , height : 50}}>
-                    <Text style={{alignSelf : 'center' , justifyContent : 'center' ,top : 10}}> Visualizar eventos anteriores e mais.</Text>
+                    onPress={() => navigate.navigate('Social')}
+                    style={{borderColor : 'black' , borderWidth : 2 , width : '90%' , marginTop : 15 , borderRadius : 5 , left : 12 , height : 50 , marginBottom : 10}}>
+                        <Text style={{alignSelf : 'center' , justifyContent : 'center' ,top : 10}}> 
+                        Visualizar eventos anteriores e mais.
+                        </Text>
                     </TouchableOpacity>
                 </View>
                 <View>
