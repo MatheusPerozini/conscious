@@ -116,6 +116,11 @@ $app->post('/substanciasinfo/{id}' , function(Request $request, Response $respon
     return $response->getBody()->write($stmt);
 });
 
+$app->get('/neweventos',function(Request $request, Response $response){
+    global $event;
+    $stmt = $event->newEvents();
+    return $response->getBody()->write($stmt);
+});
 $app->post('/eventos' , function(Request $request, Response $response){
     global $event;
     $body = $request->getBody();

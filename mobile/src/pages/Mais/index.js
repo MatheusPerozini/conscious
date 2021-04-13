@@ -2,17 +2,23 @@ import React ,{useEffect , useState} from 'react';
 import { View , FlatList , TouchableOpacity ,Text , Image , TextInput , StyleSheet} from 'react-native';
 import Menu from '../menu'
 import { useNavigation } from '@react-navigation/native';
-//import api from '../../services/api';
+import api from '../../services/api';
 
 import { Feather } from '@expo/vector-icons'; 
-import { FontAwesome } from '@expo/vector-icons'; 
 import styles from './styles'
 
 export default function Mais(){
     const [resposta , setResposta] = useState(true);
+    const [eventos , setEventos] = useState([]);
+
     //const userID = localStorage.getItem('id');
+    const date = new Date;
     const semanaGrafico = Array.from(Array(7).keys());
     const navigate = useNavigation();
+
+    useEffect(() => {
+        api.get('/neweventos').then(resp => setEventos(resp.data));
+    });
 
 //se selecionar semana , faz um map loop em que ele ira gerar 14 graficos , um de cada lado , e ira
 //dar display dependendo das repostas
@@ -23,27 +29,15 @@ export default function Mais(){
             <View>
                 <View>
                     <Text style={styles.title}>Social</Text>
-                    {//aki ficava o código de busca
-                    }
                     <View style={{flexWrap: 'wrap', alignItems: 'flex-start',flexDirection:'row' , marginTop : 10}}>
-                        <View style={styles.SocialItens}>
-                            <Text>IMAGEM</Text>
-                            <Text style={styles.socialTitle}>Biolocast</Text>
-                            <Text style={styles.socialDescription}>descricao</Text>
-                            <Text style={styles.socialLink}>Clique para o ouvir</Text>
-                        </View>
-                        <View style={styles.SocialItens}>
-                            <Text>IMAGEM</Text>
-                            <Text style={styles.socialTitle}>AN</Text>
-                            <Text style={styles.socialDescription}>descricao</Text>
-                            <Text style={styles.socialLink}>Ir para o site</Text>
-                        </View>
-                        <View style={styles.SocialItens}>
-                            <Text>IMAGEM</Text>
-                            <Text style={styles.socialTitle}>Test</Text>
-                            <Text style={styles.socialDescription}>descricao</Text>
-                            <Text style={styles.socialLink}>Ir para o site</Text>
-                        </View>
+                        {eventos.map(e => (
+                            <View style={styles.SocialItens}>
+                                <Text>IMAGEM</Text>
+                                <Text style={styles.socialTitle}>{e.nome}</Text>
+                                <Text style={styles.socialDescription}>{e.descricao}</Text>
+                                <Text style={styles.socialLink}>{e.link}</Text>
+                            </View>
+                        ))}
                     </View>
                     <TouchableOpacity
                     onPress={() => navigate.navigate('Social')}
@@ -62,9 +56,10 @@ export default function Mais(){
                             ))}
                         </View>
                         <View style={{ alignItems: 'flex-start',flexDirection:'row'}}>
-                            {semanaGrafico.map(e => (
-                                <Text style={{marginRight : 15 , marginBottom : 12}}>Dia {e}</Text>
-                            ))}
+                            {semanaGrafico.map(e => {
+                                date.setDate(date.getDate() + 1);
+                                return <Text style={{marginRight : 21,right : 2 ,marginBottom : 12, fontSize : 12}}>{`${date.getDate() - 1}/${date.getMonth() + 1}`}</Text>
+                            })}
                         </View>
                         <View style={{flexWrap: 'wrap', alignItems: 'flex-start',flexDirection:'row'}}>
                             {semanaGrafico.map(e => (
@@ -103,7 +98,3 @@ export default function Mais(){
         </View>
     )
 }
-/*
-<TextInput placeholder=' Presencial , data ....' style={styles.pesquisar} />
-                    <FontAwesome name="search" size={24} color="black"  style={{left : 357 , bottom : 33 , zIndex : 1}}/>
-*/

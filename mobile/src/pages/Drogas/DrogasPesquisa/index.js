@@ -11,18 +11,20 @@ import styles from './styles'
 
 export default function DrogasPesquisa(){
     const route = useRoute();
-
+    const navigation = useNavigation();
+    
     const pesquisa_anterior = route.params.pesquisa;
     
     const [drogas , setDrogas] = useState([]);
     const [pesquisa , setPesquisa] = useState(pesquisa_anterior);
 
-    const navigation = useNavigation();
+    useEffect(() => {
+        api.post('/drogaspesquisa' , {pesquisar : pesquisa_anterior}).then(resp => setDrogas(resp.data))
+    });
 
     async function searchhandle(text){
         useEffect(() => {
-            const resp = api.post('/drogaspesquisa' , {pesquisar : text});
-            setDrogas(resp.data);
+            api.post('/drogaspesquisa' , {pesquisar : text}).then(resp => setDsrogas(resp.data));
         });
     }
 

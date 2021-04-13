@@ -41,7 +41,7 @@ class userhandle {
         $this->sql = new Sql();
         $body = json_decode($req);
         $data = $this->sql->comandFetch(
-            "SELECT * FROM grafico WHERE id_user='$body->id'"
+            "SELECT * FROM grafico WHERE id_user='$body->id' ORDER BY dt_resposta DESC LIMIT 7"
         );
         return json_encode($data);
     }
