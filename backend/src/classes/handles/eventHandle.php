@@ -14,11 +14,12 @@ class eventHandle {
         $body = json_decode($req);
         if($body->pesquisa == null || $body->pesquisa == 'todos' || $body->pesquisa == 'Todos' || $body->pesquisa == 'TODOS'){
             $data = $this->sql->comandFetch(
-                "SELECT * FROM eventos"
+                "SELECT * FROM eventos ORDER BY dt_colocada DESC"
             );
         }else{
             $data = $this->sql->comandFetch(
-                "SELECT * FROM eventos WHERE nome LIKE '$body->pesquisa' OR data_evento LIKE '$body->pesquisa' OR localizacao LIKE '$body->pesquisa'"
+                "SELECT * FROM eventos WHERE nome LIKE '$body->pesquisa' OR data_evento LIKE '$body->pesquisa' OR localizacao LIKE '$body->pesquisa'
+                ORDER BY dt_colocada DESC"
             );
         }
         return json_encode($data);
