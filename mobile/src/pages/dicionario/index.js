@@ -1,9 +1,8 @@
-import React ,{useState , useEffect , useRef} from 'react';
-import { View , FlatList , TouchableOpacity ,Text , TextInput , StyleSheet , Keyboard, UIManager , findNodeHandle} from 'react-native';
+import React ,{useState , useEffect , useRef , createRef} from 'react';
+import { View , FlatList , TouchableOpacity ,Text , TextInput , StyleSheet , Keyboard, UIManager , findNodeHandle, RefreshControl} from 'react-native';
 import Menu from '../menu'
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
-import ReactDOM from 'react-dom'
 
 import { FontAwesome } from '@expo/vector-icons'; 
 
@@ -19,11 +18,16 @@ export default function Dicionario(){
 
     const flat = useRef();
     const substanciaRef = useRef([]);
+    const Refs = [];
 
     useEffect(() => {
         api.get('/substancias').then(resp => {setSubstancias(resp.data)});
-    });
+    } , [substancias]);
 
+/*
+    substanciaRef.current = substancias.map((element , i) => substanciaRef.current[i] ?? createRef());
+    console.log(substanciaRef)
+*/
     Keyboard.addListener('keyboardDidShow' , () => setBug(true))
     Keyboard.addListener('keyboardDidHide' , () => setBug(false))
 
@@ -32,11 +36,6 @@ export default function Dicionario(){
             bottom : bug ? 330 : 585
         }
     });
-/*
-    UIManager.measure(findNodeHandle(flat) , (x) => {
-        console.log(x);
-    })
-*/
 
     function Teste(){
         const handle = findNodeHandle(flat.current);
@@ -87,11 +86,11 @@ export default function Dicionario(){
                 <View style={styles.lista}>
                     <View>
                         <Text style={styles.title}>{item}</Text>
-                        {substancias.map(i => {
+                        {substancias.map((i , n) => {
                             let element = JSON.stringify(i.nome);
                             if(element.charAt(1).toLocaleUpperCase() == item){
                                 return(
-                                    <TouchableOpacity ref={substanciaRef.current[element.slice(1,-1)]} onPress={() => navigation.navigate('Substancia' , {id : i.id})}>
+                                    <TouchableOpacity ref={i => Refs.push(i)} onPress={() => navigation.navigate('Substancia' , {id : i.id})}>
                                     <Text style={styles.itens}>{element.slice(1,-1)}</Text>
                                     </TouchableOpacity>
                                 );}

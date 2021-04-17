@@ -12,7 +12,7 @@ export default function Social(){
 
     useEffect(() => {
         api.post('/eventos' , {pesquisa}).then(resp => setEventos(resp.data));
-    });
+    }, [pesquisa]);
 
     async function searchHandle(pesquisa){
         useEffect(() => {
@@ -27,14 +27,18 @@ export default function Social(){
             <FontAwesome name="search" size={24} color="black"  style={{left : 362 , bottom : 33 , zIndex : 1}}/>
             <FlatList data={[1]} keyExtractor={e => String(e)} style={{width : '98%' , left : 5 , height : '80%' , bottom : 15}} renderItem={() => (
                 <View style={styles.lista}>
-                    {eventos.map(e => (
+                    {eventos.length >=1 ? eventos.map(e => (
                         <View style={styles.itens}>
                             <Text>IMAGEM</Text>
                             <Text style={styles.title}>{e.nome}</Text>
                             <Text style={styles.description}>{e.descricao}</Text>
                             <Text style={styles.link}>{e.link}</Text>
                         </View>
-                    ))}
+                    )):
+                    <View>
+                        <Text style={{alignSelf : 'center' , fontSize : 20 , left : 80}}>Nada encontrado.</Text>
+                    </View>
+                    }
                 </View>
             )}/>
   

@@ -18,7 +18,7 @@ export default function Substancia(){
 
     useEffect(() => {
         api.post(`/substanciasinfo/${id}`).then(resp => setResp(resp.data[0]));
-    });
+    } , [id]);
     
     return(
         <View style={styles.container}>

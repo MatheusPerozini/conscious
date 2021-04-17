@@ -25,7 +25,7 @@ export default function Mais(){
 
     useEffect(() => {
         api.get('/neweventos').then(resp => setEventos(resp.data));
-    });
+    } , [eventos]);
 
     function updateAnswer(resposta){
         api.post('/editgrafico', {id : userID , resposta});

@@ -22,7 +22,7 @@ export default function DrogaUnica(){
 
     useEffect(() => {
         api.post(`/drogas/${id}`).then(resp => setResp(resp.data[0]));
-    });
+    } , [id]);
 
     const ajustavel = StyleSheet.create({
         first : {
