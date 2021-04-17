@@ -68,7 +68,7 @@ $app->post('/grafico',function(Request $request , Response $response){
     $stmt = $user->verGrafico($body);
     return $response->getBody()->write($stmt);
 });
-$app->post('/editGrafico',function(Request $request , Response $response){
+$app->post('/editgrafico',function(Request $request , Response $response){
     global $user;
     $body = $request->getBody();
     $stmt = $user->alterarGrafico($body);

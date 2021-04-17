@@ -4,9 +4,9 @@ import Menu from '../menu'
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
 import styles from './styles'
-import { split } from 'lodash';
 
 export default function Mais(){
     const [resposta , setResposta] = useState([]);
@@ -27,12 +27,26 @@ export default function Mais(){
         api.get('/neweventos').then(resp => setEventos(resp.data));
     });
 
+    function updateAnswer(resposta){
+        api.post('/editgrafico', {id : userID , resposta});
+        setRespondido(true);
+
+        useEffect(() => {
+            api.post('/grafico' , {id : userID}).then(resp => setResposta(resp.data));
+        }, [userID])
+    };
+
     function handleAnswer(){
-        //talvez colocar tostring no gettime abaixo
-        var data_respota = resposta.find(e => (
-            e.dt_resposta.substring(0 , 11) == `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-        ))//acho que vai ter que tirar o respondido
-        if(data_respota || respondido == true){
+        var ultimaResposta;
+        resposta.map(e => {
+            var data_respota = new Date(e.dt_resposta);
+            if(data_respota.getDate() == date.getDate()){
+                ultimaResposta = true;
+            }else{
+                ultimaResposta = false
+            }
+        })
+        if(ultimaResposta || respondido == true){
             return(
                 <View style={styles.pergunta}>
                     <Text style={{alignSelf : 'center' ,marginVertical : 10}}>Você ja respondeu hoje!</Text>
@@ -44,11 +58,11 @@ export default function Mais(){
                 <View style={styles.pergunta}>
                     <Text style={{alignSelf : 'center'}}>Você usou alguma substancia hoje?</Text>
                     <View style={{ alignItems: 'flex-start',flexDirection:'row'}}>
-                        <TouchableOpacity onPress={() => {api.post('/editGrafico',{id : userID , resposta : true}); setRespondido(true)}}
+                        <TouchableOpacity onPress={() => updateAnswer(true)}
                         style={{width : 60 , height : 40 , backgroundColor : 'green' , marginRight : 17 , left :90,top : 10}}>
                             <Text style={{color : 'white' ,top : 8 , left : 15}}>SIM</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => {api.post('/editGrafico',{id : userID , resposta : false}); setRespondido(true)}}
+                        <TouchableOpacity onPress={() => updateAnswer(false)}
                         style={{width : 60 , height : 40 , backgroundColor : 'red' , left : 110 ,top : 10}}>
                             <Text style={{color : 'white',top : 8 , left : 13}}>NÃO</Text>
                         </TouchableOpacity>
@@ -107,15 +121,18 @@ export default function Mais(){
                         {handleAnswer()}
                 </View>
                 <View>
-                    <Text style={styles.title}>Configurações</Text>
+                    <Text style={[styles.title , {marginBottom : 7}]}>Configurações</Text>
                 </View>
-                <TouchableOpacity>
-                    <Text style={{left : 30}}>Excluir conta.</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Feather name="log-out" size={24} color="black" />
-                    <Text style={{left : 30 , bottom : 25}}>Deslogar</Text>
-                </TouchableOpacity>
+                <View style={{flexWrap: 'wrap', alignItems: 'flex-start',flexDirection:'row' , width : '95%'}}>
+                    <TouchableOpacity>
+                        <Feather name="log-out" size={24} color="black" />
+                        <Text style={{bottom : 25 , left : 30}}>Deslogar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={{marginLeft : 190}}>Excluir conta</Text>
+                        <AntDesign name="closecircleo" size={24} color="black" style={{left : 294 , bottom : 24}}/>
+                    </TouchableOpacity>
+                </View>
             </View>
             )}/>
             <Menu />

@@ -52,7 +52,7 @@ export default StyleSheet.create({
         top : 10,
         left : 17,
         height : 90,
-        marginBottom:15,
+        marginBottom:17,
         marginTop : 7,
         borderRadius : 5
     },

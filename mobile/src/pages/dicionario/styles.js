@@ -35,8 +35,7 @@ export default StyleSheet.create({
     menuSubstancias : {
         width : '88%' ,
         height : '78%' ,
-        bottom : 570,
-        left : 7
+        left : 7,
     },
     itens : {
         marginVertical : 5,

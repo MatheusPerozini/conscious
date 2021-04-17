@@ -49,7 +49,7 @@ class userhandle {
         $this->sql = new Sql();
         $body = json_decode($req);
         $data = $this->sql->comandFetch(
-            "INSERT INTO grafico (id_user , repostas) VALUES ('$body->id','$body->resposta')"
+            "INSERT INTO grafico (id_user , respostas) VALUES ('$body->id' , '$body->resposta')"
         );
         return json_encode($data);
     }
@@ -62,5 +62,4 @@ class userhandle {
         return json_encode($data);
     }
 }
-//SELECT * FROM grafico WHERE id_user='$body->id' ORDER BY dt_resposta DESC LIMIT 7
 ?>

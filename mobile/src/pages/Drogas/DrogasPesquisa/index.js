@@ -24,7 +24,7 @@ export default function DrogasPesquisa(){
 
     async function searchhandle(text){
         useEffect(() => {
-            api.post('/drogaspesquisa' , {pesquisar : text}).then(resp => setDsrogas(resp.data));
+            api.post('/drogaspesquisa' , {pesquisar : text}).then(resp => setDrogas(resp.data));
         });
     }
 
