@@ -23,7 +23,6 @@ export default function Routes(){
                 <appStack.Screen component={Dicionario} name='Dicionario' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Mais} name='Mais' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Logon} name='Login' options={{animationEnabled: false,}}/>
-                
                 <appStack.Screen component={Register} name='Register' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={DrogaUnica} name='DrogaUnica' options={{animationEnabled: false,}}/>
                 <appStack.Screen component={Substancia} name='Substancia' options={{animationEnabled: false,}}/>

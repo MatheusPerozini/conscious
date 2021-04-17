@@ -33,7 +33,7 @@ export default function Mais(){
 
         useEffect(() => {
             api.post('/grafico' , {id : userID}).then(resp => setResposta(resp.data));
-        }, [userID])
+        })
     };
 
     function handleAnswer(){
@@ -59,12 +59,12 @@ export default function Mais(){
                     <Text style={{alignSelf : 'center'}}>Você usou alguma substancia hoje?</Text>
                     <View style={{ alignItems: 'flex-start',flexDirection:'row'}}>
                         <TouchableOpacity onPress={() => updateAnswer(true)}
-                        style={{width : 60 , height : 40 , backgroundColor : 'green' , marginRight : 17 , left :90,top : 10}}>
-                            <Text style={{color : 'white' ,top : 8 , left : 15}}>SIM</Text>
+                        style={{width : 60 , height : 40 , borderColor : 'black' , borderWidth : 3 , marginRight : 17 , left :90,top : 10}}>
+                            <Text style={{top : 8 , left : 15}}>SIM</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => updateAnswer(false)}
-                        style={{width : 60 , height : 40 , backgroundColor : 'red' , left : 110 ,top : 10}}>
-                            <Text style={{color : 'white',top : 8 , left : 13}}>NÃO</Text>
+                        style={{width : 60 , height : 40 , borderColor : 'black' , borderWidth : 3 , left : 110 ,top : 10}}>
+                            <Text style={{top : 8 , left : 13}}>NÃO</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

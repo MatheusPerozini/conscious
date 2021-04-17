@@ -18,16 +18,11 @@ export default function Dicionario(){
 
     const flat = useRef();
     const substanciaRef = useRef([]);
-    const Refs = [];
 
     useEffect(() => {
         api.get('/substancias').then(resp => {setSubstancias(resp.data)});
     } , [substancias]);
 
-/*
-    substanciaRef.current = substancias.map((element , i) => substanciaRef.current[i] ?? createRef());
-    console.log(substanciaRef)
-*/
     Keyboard.addListener('keyboardDidShow' , () => setBug(true))
     Keyboard.addListener('keyboardDidHide' , () => setBug(false))
 
@@ -44,18 +39,15 @@ export default function Dicionario(){
         })
     }
 
-
-    function handleSearch(){
+    function handleSearch(pesquisa){
         try {
-            console.log(pesquisa);
-            substanciaRef.map(e => console.log(e))
-            const index = substanciaRef.find(e => e == pesquisa);
-            console.log(index);
-            const handle = findNodeHandle(substanciaRef[index].current);
-            UIManager.measure(handle , (x , y , w , h ,pagex , pagey) => {
-                console.log(pagey)
-                flat.current.scrollToOffset({offset : pagey , animated : true})
-            })
+            const index = substanciaRef.current.indexOf(pesquisa);
+            console.log(substanciaRef.current[index]);
+            const handle = findNodeHandle(substanciaRef.current[index]);
+            console.log('opa');
+            UIManager.measure(handle , (x , y , w , h ,pagex) => {
+            console.log(pagex)
+        })
         } catch (error) {
             //checar se a primeira letra a maiuscula
             if(pesquisa.charAt(0) == pesquisa.charAt(0).toUpperCase()){
@@ -68,7 +60,7 @@ export default function Dicionario(){
     
     return(
         <View style={styles.container}>
-            <TextInput value={pesquisa} onChangeText={e =>{setPesquisa(e);setBug(true)}} onSubmitEditing={() => {handleSearch(); setBug(false)}}
+            <TextInput value={pesquisa} onChangeText={e =>{setPesquisa(e);setBug(true)}} onSubmitEditing={() => {handleSearch(pesquisa); setBug(false)}}
             placeholder=' Nome da substância , composição ...' style={styles.pesquisar} onFocus={() => setBug(true)}></TextInput>
             <FontAwesome name="search" size={24} color="black"  style={{left : 360 , bottom : 33 , zIndex : 1}}/>
             <FlatList data={[1]} keyExtractor={e => String(e)} style={{height : '80%'}} renderItem={() => (
@@ -86,12 +78,12 @@ export default function Dicionario(){
                 <View style={styles.lista}>
                     <View>
                         <Text style={styles.title}>{item}</Text>
-                        {substancias.map((i , n) => {
+                        {substancias.map((i) => {
                             let element = JSON.stringify(i.nome);
                             if(element.charAt(1).toLocaleUpperCase() == item){
                                 return(
-                                    <TouchableOpacity ref={i => Refs.push(i)} onPress={() => navigation.navigate('Substancia' , {id : i.id})}>
-                                    <Text style={styles.itens}>{element.slice(1,-1)}</Text>
+                                    <TouchableOpacity ref={() => substanciaRef.current.push(element.slice(1 , -1))} onPress={() => navigation.navigate('Substancia' , {id : i.id})}>
+                                    <Text style={styles.itens}>{element.slice(1,-1)}, {substanciaRef.current.length}</Text>
                                     </TouchableOpacity>
                                 );}
                         })}
